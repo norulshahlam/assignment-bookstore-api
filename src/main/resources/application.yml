@@ -1,0 +1,13 @@
+openapi:
+  project-title: Bookstore API
+  project-version: v1
+  project-description: Management of books and it's authors
+spring-doc:
+  pathsToMatch: /api/v1/**
+spring:
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+  profiles:
+    active: dev

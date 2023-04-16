@@ -1,0 +1,13 @@
+server:
+  port: 8084
+spring:
+  datasource:
+    url: jdbc:h2:mem:supplementlist
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true

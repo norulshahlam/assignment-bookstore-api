@@ -1,0 +1,35 @@
+server:
+  port: 8083
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+spring:
+  datasource:
+    url: jdbc:h2:mem:bookstore
+    driver-class-name: org.h2.Driver
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: create
+  sql:
+    init:
+      mode: always
+  application:
+    profile: dev
+  h2:
+    console:
+      enabled: true
+  batch:
+    job:
+      enabled: false
+    initialize-schema: ALWAYS

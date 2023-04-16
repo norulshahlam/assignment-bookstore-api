@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "343ee798-9f59-42e7-879f-64470247c07b",
+		"name": "dxc-assignment-bookstore-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10507560"
+	},
+	"item": [
+		{
+			"name": "add book",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"how-to-cook\",\r\n    \"year\": 1990,\r\n    \"price\": 190.50,\r\n    \"genre\":\"cooking\",\r\n    \"author\" : [\r\n        {\r\n            \"name\":\"Pet\",\r\n            \"birthday\":\"20-12-1990\"\r\n        },\r\n        {\r\n            \"name\":\"John Sins\",\r\n            \"birthday\":\"20-12-1979\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/add-book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"add-book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update book",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"isbn\": \"5f4f21b2-225d-4a07-a2bb-cd9314b63ffa\",\r\n    \"title\": \"Stock tradingg\",\r\n    \"author\": [\r\n        {\r\n            \"name\": \"Peterr\",\r\n            \"birthday\": \"30-08-1995\"\r\n        },\r\n        {\r\n            \"name\": \"Adamm\",\r\n            \"birthday\": \"30-08-1971\"\r\n        }\r\n    ],\r\n    \"year\": \"2000\",\r\n    \"price\": 75.20,\r\n    \"genre\": \"Financeeee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/update-book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"update-book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete book",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/delete-book/46e12bc1-5896-4afe-be22-cb4b93716973",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"delete-book",
+						"46e12bc1-5896-4afe-be22-cb4b93716973"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get book by author title",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/get-book-by-title-author?author=bob",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"get-book-by-title-author"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "ghostbusters",
+							"disabled": true
+						},
+						{
+							"key": "author",
+							"value": "bob"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
