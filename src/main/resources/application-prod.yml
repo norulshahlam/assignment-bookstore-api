@@ -1,5 +1,7 @@
 server:
   port: 8083
+  tomcat:
+    max-threads: 2
 management:
   endpoints:
     web:
