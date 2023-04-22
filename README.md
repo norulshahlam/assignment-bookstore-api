@@ -35,7 +35,7 @@ By utilizing these technologies, the project is able to deliver a fast, reliable
 ### Hostname
 
 - dev profile: `http://localhost:8083`  
-- prod profile: `https://bookstore-api-dxc-assignement.herokuapp.com`  
+- prod profile: `https://assignment-bookstore-api.herokuapp.com/`  
 
 ### Preloaded data
 
@@ -92,7 +92,7 @@ To run the Bookstore API, follow these steps:
 
 - Clone this repository to your local machine by running the below command in terminal:
 
-      git clone https://github.com/norulshahlam/bookstore-api-dxc-assignement.git
+      git clone https://github.com/norulshahlam/assignment-bookstore-api.git
 
 - Navigate to the project directory in the terminal/command prompt.
 
@@ -131,7 +131,7 @@ To run the Bookstore API, follow these steps:
 
 - You may skip all steps above if the production hostname is available, to access Swagger (don't forget credentials!).
    
-       https://bookstore-api-dxc-assignement.herokuapp.com/swagger-ui/index.html
+       {hostname}/swagger-ui/index.html#/
 
 8. For any issues, email me at norulshahlam@gmail.com or whatsapp me at +6592212152
 
