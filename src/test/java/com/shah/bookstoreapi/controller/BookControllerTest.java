@@ -1,12 +1,12 @@
 package com.shah.bookstoreapi.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.shah.bookstoreapi.impl.BookServiceImpl;
 import com.shah.bookstoreapi.model.entity.Author;
 import com.shah.bookstoreapi.model.entity.Book;
 import com.shah.bookstoreapi.model.request.CreateBookRequest;
 import com.shah.bookstoreapi.repository.BookRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,6 +42,7 @@ class BookControllerTest {
     @InjectMocks
     private BookServiceImpl service;
 
+    public static Long CURRENT_YEAR = Long.valueOf(Year.now().toString());
     @Autowired
     private BookRepository repository;
     private CreateBookRequest createBookRequest;
@@ -77,13 +78,12 @@ class BookControllerTest {
 
         savedBook = repository.save(book1);
 
-
         createBookRequest = CreateBookRequest.builder()
                 .author(Arrays.asList(author1, author2))
                 .title("Ghostbusters")
                 .genre("Horror")
-                .year(Year.of(2000))
-                .price(BigDecimal.valueOf(25.50))
+                .year(String.valueOf(2000))
+                .price("25.50")
                 .build();
         /**
          to fix the error ‘Java 8 date/time type not supported by default‘ while serializing and deserializing Java 8 Date time classes using Jackson.
@@ -161,4 +161,10 @@ class BookControllerTest {
                 .andExpect(jsonPath("$.data.title", Matchers.equalToIgnoringCase("Changed title")))
                 .andExpect(status().isOk());
     }
+    @Test
+    void getCurrentYear(){
+         Long now = Long.valueOf(Year.now().toString());
+        System.out.println(now);
+    }
+
 }

@@ -1,23 +1,23 @@
-30-04-2023 Sun 10:25:58.467 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-30-04-2023 Sun 10:25:58.469 [restartedMain] INFO  c.s.b.Application - Starting Application using Java 17.0.6 on DESKTOP-I5GN77B with PID 10544 (C:\Users\NORUL\IdeaProjects\banking-application-crud-tutorials\target\classes started by NORUL in C:\Users\NORUL\IdeaProjects\assignment-bookstore-api)
-30-04-2023 Sun 10:25:58.470 [restartedMain] INFO  c.s.b.Application - No active profile set, falling back to 1 default profile: "default"
-30-04-2023 Sun 10:25:58.505 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-30-04-2023 Sun 10:25:58.505 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-30-04-2023 Sun 10:25:59.278 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-30-04-2023 Sun 10:25:59.341 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interfaces.
-30-04-2023 Sun 10:26:00.249 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
-30-04-2023 Sun 10:26:00.258 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
-30-04-2023 Sun 10:26:00.259 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-30-04-2023 Sun 10:26:00.259 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
-30-04-2023 Sun 10:26:00.347 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-30-04-2023 Sun 10:26:00.347 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1841 ms
-30-04-2023 Sun 10:26:00.523 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-30-04-2023 Sun 10:26:00.592 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
-30-04-2023 Sun 10:26:00.798 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-30-04-2023 Sun 10:26:00.899 [restartedMain] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - maxLifetime is less than 30000ms, setting to default 1800000ms.
-30-04-2023 Sun 10:26:00.900 [restartedMain] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-30-04-2023 Sun 10:26:00.900 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-30-04-2023 Sun 10:26:01.973 [restartedMain] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+26-04-2023 Wed 21:45:24.844 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+26-04-2023 Wed 21:45:24.847 [restartedMain] INFO  c.s.b.Application - Starting Application using Java 17.0.6 on DESKTOP-I5GN77B with PID 44708 (C:\Users\NORUL\IdeaProjects\banking-application-crud-tutorials\target\classes started by NORUL in C:\Users\NORUL\IdeaProjects\assignment-bookstore-api)
+26-04-2023 Wed 21:45:24.847 [restartedMain] INFO  c.s.b.Application - No active profile set, falling back to 1 default profile: "default"
+26-04-2023 Wed 21:45:24.885 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+26-04-2023 Wed 21:45:24.886 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+26-04-2023 Wed 21:45:25.649 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+26-04-2023 Wed 21:45:25.709 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+26-04-2023 Wed 21:45:26.333 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+26-04-2023 Wed 21:45:26.346 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+26-04-2023 Wed 21:45:26.347 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+26-04-2023 Wed 21:45:26.348 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.65]
+26-04-2023 Wed 21:45:26.441 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+26-04-2023 Wed 21:45:26.441 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1555 ms
+26-04-2023 Wed 21:45:26.579 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+26-04-2023 Wed 21:45:26.639 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.10.Final
+26-04-2023 Wed 21:45:26.810 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+26-04-2023 Wed 21:45:26.909 [restartedMain] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - maxLifetime is less than 30000ms, setting to default 1800000ms.
+26-04-2023 Wed 21:45:26.910 [restartedMain] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+26-04-2023 Wed 21:45:26.910 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+26-04-2023 Wed 21:45:28.018 [restartedMain] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
@@ -105,7 +105,7 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
 	... 57 common frames omitted
-30-04-2023 Sun 10:26:01.974 [restartedMain] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+26-04-2023 Wed 21:45:28.019 [restartedMain] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
@@ -193,10 +193,10 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
 	... 57 common frames omitted
-30-04-2023 Sun 10:26:01.988 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-30-04-2023 Sun 10:26:02.448 [restartedMain] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-30-04-2023 Sun 10:26:02.448 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-30-04-2023 Sun 10:26:03.463 [restartedMain] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+26-04-2023 Wed 21:45:28.032 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+26-04-2023 Wed 21:45:28.484 [restartedMain] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+26-04-2023 Wed 21:45:28.485 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+26-04-2023 Wed 21:45:29.498 [restartedMain] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
 com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
@@ -284,17 +284,17 @@ Caused by: java.net.ConnectException: Connection refused: no further information
 	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
 	... 57 common frames omitted
-30-04-2023 Sun 10:26:03.464 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-30-04-2023 Sun 10:26:03.464 [restartedMain] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
+26-04-2023 Wed 21:45:29.499 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
+26-04-2023 Wed 21:45:29.499 [restartedMain] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-30-04-2023 Sun 10:26:03.470 [restartedMain] ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-30-04-2023 Sun 10:26:03.470 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-30-04-2023 Sun 10:26:03.473 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-30-04-2023 Sun 10:26:03.482 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+26-04-2023 Wed 21:45:29.502 [restartedMain] ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+26-04-2023 Wed 21:45:29.502 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+26-04-2023 Wed 21:45:29.504 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+26-04-2023 Wed 21:45:29.513 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-30-04-2023 Sun 10:26:03.499 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+26-04-2023 Wed 21:45:29.527 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)

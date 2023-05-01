@@ -5,6 +5,7 @@ import com.shah.bookstoreapi.model.entity.Book;
 import com.shah.bookstoreapi.model.request.CreateBookRequest;
 import com.shah.bookstoreapi.model.request.UpdateBookRequest;
 import com.shah.bookstoreapi.model.response.BookResponse;
+import com.shah.bookstoreapi.model.response.CreateBookResponse;
 import com.shah.bookstoreapi.repository.BookRepository;
 import com.shah.bookstoreapi.service.BookService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static com.shah.bookstoreapi.helper.ObjectMapper.bookRequestToBookMapper;
+import static com.shah.bookstoreapi.helper.ObjectMapper.bookToBookResponseMapper;
 import static com.shah.bookstoreapi.model.response.BookResponse.successResponse;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -34,15 +37,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookResponse<Book> addBook(CreateBookRequest book) {
+    public BookResponse<CreateBookResponse> addBook(CreateBookRequest book) {
         log.info("in BookService::addBook");
 
-        // Deep copy
-        Book book2 = new Book();
-        BeanUtils.copyProperties(book, book2);
+        Book book2 = bookRequestToBookMapper(book);
         Book savedBook = repository.save(book2);
+        CreateBookResponse createBookResponse = bookToBookResponseMapper(savedBook);
         log.info("New book created: {}", savedBook);
-        return successResponse(savedBook);
+        return successResponse(createBookResponse);
     }
 
     @Override

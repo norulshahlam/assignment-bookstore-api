@@ -4,6 +4,7 @@ import com.shah.bookstoreapi.model.entity.Book;
 import com.shah.bookstoreapi.model.request.CreateBookRequest;
 import com.shah.bookstoreapi.model.request.UpdateBookRequest;
 import com.shah.bookstoreapi.model.response.BookResponse;
+import com.shah.bookstoreapi.model.response.CreateBookResponse;
 import com.shah.bookstoreapi.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -14,11 +15,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.UUID;
 
 import static com.shah.bookstoreapi.model.Constants.*;
 
+/**
+ * @author NORUL
+ */
 @RestController
 @Slf4j
 @RequestMapping(API_V1)
@@ -33,9 +38,14 @@ public class BookController {
     @GetMapping(GET_BOOK_BY_TITLE_AUTHOR)
     public ResponseEntity<BookResponse<List<Book>>> getBookByTitleAndOrAuthor(
             @Parameter(description = "Title of book", example = "Ghostbusters")
-            @RequestParam(defaultValue = "") String title,
+            @RequestParam
+            @NotBlank
+            String title,
+
             @Parameter(description = "Author of book", example = "Bob")
-            @RequestParam(defaultValue = "") String author
+            @RequestParam
+            @NotBlank
+            String author
     ) {
         log.info("in BookController::get-book-by-title-author");
         log.info("title: {}, author: {}", title, author);
@@ -44,10 +54,10 @@ public class BookController {
     }
 
     @PostMapping(ADD_BOOK)
-    public ResponseEntity<BookResponse<Book>> addBook(@Valid @RequestBody CreateBookRequest book) {
+    public ResponseEntity<BookResponse<CreateBookResponse>> addBook(@Valid @RequestBody CreateBookRequest book) {
         log.info("in BookController::addBook");
         log.info("Book: {}", book);
-        BookResponse<Book> savedBook = service.addBook(book);
+        BookResponse<CreateBookResponse> savedBook = service.addBook(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
     }
 

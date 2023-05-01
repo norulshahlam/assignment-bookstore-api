@@ -7,6 +7,7 @@ import com.shah.bookstoreapi.model.entity.Book;
 import com.shah.bookstoreapi.model.request.CreateBookRequest;
 import com.shah.bookstoreapi.model.request.UpdateBookRequest;
 import com.shah.bookstoreapi.model.response.BookResponse;
+import com.shah.bookstoreapi.model.response.CreateBookResponse;
 import com.shah.bookstoreapi.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -71,18 +72,16 @@ class BookServiceTest {
                 .author(Arrays.asList(author1, author2))
                 .title("Ghostbusters")
                 .genre("Horror")
-                .year(Year.of(2000))
-                .price(BigDecimal.valueOf(25.50))
+                .year(String.valueOf(2000))
+                .price("25.50")
                 .build();
-
-
     }
 
     @Test
     void addBook() {
         when(repository.save(any())).thenReturn(book1);
-        BookResponse<Book> addBookResponse = service.addBook(createBookRequest);
-        Book data = addBookResponse.getData();
+        BookResponse<CreateBookResponse> addBookResponse = service.addBook(createBookRequest);
+        CreateBookResponse data = addBookResponse.getData();
 
         assertThat(data.getAuthor()).isNotInstanceOf(Author.class);
         assertThat(addBookResponse.getStatus()).isEqualTo(SUCCESS);

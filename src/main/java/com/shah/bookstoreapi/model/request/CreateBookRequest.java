@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
-import java.math.BigDecimal;
-import java.time.Year;
+import javax.validation.constraints.*;
 import java.util.List;
 
+
+/**
+ * @author NORUL
+ */
 @Data
 @Builder
 @AllArgsConstructor
@@ -24,15 +24,26 @@ public class CreateBookRequest {
 
     @Schema(type = "string", example = "Adventures of Tintin")
     @Length(min = 3, message = "Title must be minimum 3 character")
+    @NotBlank(message = "title cannot be blank")
     private String title;
+
     @NotEmpty(message = "Author information cannot be empty.")
     private List<@Valid Author> author;
+
     @Schema(type = "Year", example = "1990")
-    @Past(message = "Year must be in the past!")
-    private Year year;
+    @Min(value = 1900, message = "year must be at least 1900")
+    @Digits(fraction = 0, integer = 4, message = "year must be in yyyy format")
+    @Max(value = 2222, message = "year must be less than 2222")
+    @NotBlank(message = "year cannot be blank")
+    private String year;
+
     @Schema(example = "25.50")
     @Digits(integer = 4, fraction = 2, message = "Price must be in 2 decimal places")
-    private BigDecimal price;
+    @Positive(message="price must be positive")
+    @NotBlank(message = "price cannot be blank")
+    private String price;
+
     @Schema(type = "string", example = "Horror")
+    @NotBlank(message = "genre cannot be blank")
     private String genre;
 }
