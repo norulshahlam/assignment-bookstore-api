@@ -21,7 +21,7 @@ import java.util.Arrays;
 @ConfigurationPropertiesScan
 public class Application implements CommandLineRunner {
 
-	private BookRepository repository;
+	private final BookRepository repository;
 
 	public Application(BookRepository repository) {
 		this.repository = repository;
