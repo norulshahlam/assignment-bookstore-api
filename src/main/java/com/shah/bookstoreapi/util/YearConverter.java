@@ -1,9 +1,9 @@
 package com.shah.bookstoreapi.util;
 
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
 import java.time.Year;
 
 @Converter(autoApply = true)

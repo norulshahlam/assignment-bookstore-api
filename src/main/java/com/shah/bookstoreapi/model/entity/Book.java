@@ -1,14 +1,12 @@
 package com.shah.bookstoreapi.model.entity;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
-import javax.validation.constraints.PastOrPresent;
 import java.math.BigDecimal;
 import java.time.Year;
 import java.util.List;
@@ -26,7 +24,6 @@ public class Book {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @Type(type="org.hibernate.type.UUIDCharType")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"

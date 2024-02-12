@@ -2,14 +2,14 @@ package com.shah.bookstoreapi.model.request;
 
 import com.shah.bookstoreapi.model.entity.Author;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import java.util.List;
 
 
@@ -27,8 +27,9 @@ public class CreateBookRequest {
     @NotBlank(message = "title cannot be blank")
     private String title;
 
+    @Valid
     @NotEmpty(message = "Author information cannot be empty.")
-    private List<@Valid Author> author;
+    private List<Author> author;
 
     @Schema(type = "Year", example = "1990")
     @Min(value = 1900, message = "year must be at least 1900")

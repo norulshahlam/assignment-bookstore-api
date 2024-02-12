@@ -3,13 +3,11 @@ package com.shah.bookstoreapi.config;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConstructorBinding;
 
 /**
  * @author NORUL
  */
-@ConfigurationProperties(prefix = "openapi")
-@ConstructorBinding
+@ConfigurationProperties("openapi")
 @AllArgsConstructor
 @Getter
 public class OpenApiProperties {
