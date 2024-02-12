@@ -14,8 +14,8 @@ The Bookstore API provides the following features:
 ### Technology Stack
 The Bookstore API is built using the following technology stack:
 
-- Java 11
-- Spring Boot Framework
+- Java 17
+- Spring Boot 3.2.2
 - Maven
 - H2 Database (for local development environment)
 - PostgreSQL (for production environment)

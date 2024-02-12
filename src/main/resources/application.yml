@@ -1,10 +1,16 @@
-openapi:
-  project-title: Bookstore API
-  project-version: v1
-  project-description: Management of books and it's authors
 spring-doc:
   pathsToMatch: /api/v1/**
+  title: Bookstore API
+  version: v1
+  description: Management of books and it's authors
+  url: http://www.norulshahlam.com/
+  name: Shah & Co
+  email: norulshahlam@gmail.com
+  license-name: License 30AP
+  license-url: url
 spring:
+  application:
+    name: bookstore-svc
   jpa:
     properties:
       hibernate:

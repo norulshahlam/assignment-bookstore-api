@@ -3,6 +3,7 @@ package com.shah.bookstoreapi.config;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
@@ -20,22 +21,30 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfig {
 
     @Bean
-    public OpenAPI customOpenAPI(OpenApiProperties properties) {
+    public OpenAPI customOpenApi(OpenApiProperties properties) {
         return new OpenAPI()
-                .info(getInfo(properties));
+                .info(getInfo(properties)
+                        .contact(getContact(properties)));
     }
 
     private Info getInfo(OpenApiProperties properties) {
         return new Info()
-                .title(properties.getProjectTitle())
-                .description(properties.getProjectDescription())
-                .version(properties.getProjectVersion())
-                .license(getLicense());
+                .title(properties.getTitle())
+                .description(properties.getDescription())
+                .version(properties.getVersion())
+                .license(getLicense(properties));
     }
 
-    private License getLicense() {
+    private Contact getContact(OpenApiProperties properties) {
+        return new Contact()
+                .url(properties.getUrl())
+                .name(properties.getName())
+                .email(properties.getEmail());
+    }
+
+    private License getLicense(OpenApiProperties properties) {
         return new License()
-                .name("Unlicense")
-                .url("https://unlicense.org/");
+                .name(properties.getLicenseName())
+                .url(properties.getLicenseUrl());
     }
 }

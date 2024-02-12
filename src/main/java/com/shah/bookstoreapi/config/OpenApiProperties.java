@@ -7,12 +7,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author NORUL
  */
-@ConfigurationProperties("openapi")
+@ConfigurationProperties("spring-doc")
 @AllArgsConstructor
 @Getter
 public class OpenApiProperties {
 
-    private final String projectTitle;
-    private final String projectDescription;
-    private final String projectVersion;
+    private final String title;
+    private final String description;
+    private final String version;
+    private final String url;
+    private final String name;
+    private final String email;
+    private final String licenseName;
+    private final String licenseUrl;
 }
