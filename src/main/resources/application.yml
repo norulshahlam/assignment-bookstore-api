@@ -15,5 +15,8 @@ spring:
     properties:
       hibernate:
         globally_quoted_identifiers: true
+  output:
+    ansi:
+      enabled: always
   profiles:
     active: dev
