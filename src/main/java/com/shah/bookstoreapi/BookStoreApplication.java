@@ -19,16 +19,16 @@ import java.util.Arrays;
  */
 @SpringBootApplication
 @ConfigurationPropertiesScan
-public class Application implements CommandLineRunner {
+public class BookStoreApplication implements CommandLineRunner {
 
 	private final BookRepository repository;
 
-	public Application(BookRepository repository) {
+	public BookStoreApplication(BookRepository repository) {
 		this.repository = repository;
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(BookStoreApplication.class, args);
 	}
 
 	@Override
