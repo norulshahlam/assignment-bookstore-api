@@ -65,7 +65,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * to handle proper formatting from client input
+     * to handle improper formatting from client input
      *
      * @param req
      * @param e
