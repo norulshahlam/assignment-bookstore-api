@@ -4,6 +4,9 @@ import com.shah.bookstoreapi.model.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
+/**
+ * @author NORUL
+ */
 @Builder
 @Data
 @NoArgsConstructor
