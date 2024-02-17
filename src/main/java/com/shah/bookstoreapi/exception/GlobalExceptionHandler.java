@@ -5,15 +5,14 @@ import com.shah.bookstoreapi.model.response.BookResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
@@ -44,24 +43,47 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseBody
-    public BookResponse<String> handleMethodArgumentNotValidException(
-            HttpServletRequest req, MethodArgumentNotValidException e) {
+    public ResponseEntity<BookResponse<List<Errors>>> handleMethodArgumentNotValidException(HttpServletRequest req, MethodArgumentNotValidException e) {
 
-        List<String> cause = new ArrayList<>();
+        String requestUri = req.getRequestURI();
 
-        for (FieldError error : e.getBindingResult().getFieldErrors()) {
-            cause.add(error.getDefaultMessage());
-        }
-        for (ObjectError error : e.getBindingResult().getGlobalErrors()) {
-            cause.add(error.getDefaultMessage());
-        }
-        String errorMessages = String.join(", ", cause);
+        List<Errors> cause = e.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .map(error -> Errors.builder()
+                        .fieldName(error.getField())
+                        .errorMessage(error.getDefaultMessage())
+                        .build())
+                .toList();
 
-        log.error(ERROR_CAUSED_BY, errorMessages);
-        return BookResponse.failureResponse(errorMessages);
+        log.error(ERROR_CAUSED_BY, cause);
+        BookResponse<List<Errors>> response = BookResponse.failureResponse(cause, "Validation failed for request URI: " + requestUri);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * to handle improper formatting from client input
+     *
+     * @param req
+     * @param e
+     * @return
+     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({HttpMessageNotReadableException.class})
+    @ResponseBody
+    public ResponseEntity<BookResponse<List<Errors>>> handleHttpMessageNotReadableException(HttpServletRequest req, HttpMessageNotReadableException e) {
+
+        String requestUri = req.getRequestURI();
+
+        String message = e.getMessage();
+
+        log.error(ERROR_CAUSED_BY, message);
+        BookResponse<List<Errors>> response = BookResponse.failureResponse(message, "Validation failed for request URI: " + requestUri);
+        return ResponseEntity.ok(response);
     }
 
     /**

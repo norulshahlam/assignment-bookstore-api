@@ -28,4 +28,11 @@ public class BookResponse<T> {
                 .errorMessage(errorMessage)
                 .build();
     }
+    public static <T> BookResponse failureResponse(T data, String errorMessage) {
+        return BookResponse.builder()
+                .status(ResponseStatus.FAILURE)
+                .data(data)
+                .errorMessage(errorMessage)
+                .build();
+    }
 }
