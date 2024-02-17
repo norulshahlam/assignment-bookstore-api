@@ -44,7 +44,6 @@ public class GlobalExceptionHandler {
      * @return
      */
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseBody
     public ResponseEntity<BookResponse<List<Errors>>> handleMethodArgumentNotValidException(HttpServletRequest req, MethodArgumentNotValidException e) {
@@ -62,7 +61,7 @@ public class GlobalExceptionHandler {
 
         log.error(ERROR_CAUSED_BY, cause);
         BookResponse<List<Errors>> response = BookResponse.failureResponse(cause, "Validation failed for request URI: " + requestUri);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.badRequest().body(response);
     }
 
     /**
@@ -72,17 +71,16 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({HttpMessageNotReadableException.class})
     @ResponseBody
-    public ResponseEntity<BookResponse<List<Errors>>> handleHttpMessageNotReadableException(HttpServletRequest req, HttpMessageNotReadableException e) {
+    public ResponseEntity<BookResponse<String>> handleHttpMessageNotReadableException(HttpServletRequest req, HttpMessageNotReadableException e) {
 
         String requestUri = req.getRequestURI();
 
         String message = e.getMessage();
 
         log.error(ERROR_CAUSED_BY, message);
-        BookResponse<List<Errors>> response = BookResponse.failureResponse(message, "Validation failed for request URI: " + requestUri);
+        BookResponse<String> response = BookResponse.failureResponse(message, "Validation failed for request URI: " + requestUri);
         return ResponseEntity.ok(response);
     }
 
