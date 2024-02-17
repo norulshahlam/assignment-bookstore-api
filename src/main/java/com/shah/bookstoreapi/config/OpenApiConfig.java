@@ -21,13 +21,13 @@ import org.springframework.context.annotation.Configuration;
 public class OpenApiConfig {
 
     @Bean
-    public OpenAPI customOpenApi(OpenApiProperties properties) {
+    public OpenAPI customOpenApi(SpringDocProperties properties) {
         return new OpenAPI()
                 .info(getInfo(properties)
                         .contact(getContact(properties)));
     }
 
-    private Info getInfo(OpenApiProperties properties) {
+    private Info getInfo(SpringDocProperties properties) {
         return new Info()
                 .title(properties.getTitle())
                 .description(properties.getDescription())
@@ -35,14 +35,14 @@ public class OpenApiConfig {
                 .license(getLicense(properties));
     }
 
-    private Contact getContact(OpenApiProperties properties) {
+    private Contact getContact(SpringDocProperties properties) {
         return new Contact()
                 .url(properties.getUrl())
                 .name(properties.getName())
                 .email(properties.getEmail());
     }
 
-    private License getLicense(OpenApiProperties properties) {
+    private License getLicense(SpringDocProperties properties) {
         return new License()
                 .name(properties.getLicenseName())
                 .url(properties.getLicenseUrl());
