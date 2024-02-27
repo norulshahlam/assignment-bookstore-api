@@ -1,10 +1,10 @@
 package com.shah.bookstoreapi.impl;
 
-import com.shah.bookstoreapi.exception.BookException;
+import com.shah.bookstoreapi.exception.MyException;
 import com.shah.bookstoreapi.model.entity.Book;
 import com.shah.bookstoreapi.model.request.CreateBookRequest;
 import com.shah.bookstoreapi.model.request.UpdateBookRequest;
-import com.shah.bookstoreapi.model.response.BookResponse;
+import com.shah.bookstoreapi.model.response.MyResponse;
 import com.shah.bookstoreapi.model.response.CreateBookResponse;
 import com.shah.bookstoreapi.repository.BookRepository;
 import com.shah.bookstoreapi.service.BookService;
@@ -18,7 +18,7 @@ import java.util.UUID;
 
 import static com.shah.bookstoreapi.helper.ObjectMapper.bookRequestToBookMapper;
 import static com.shah.bookstoreapi.helper.ObjectMapper.bookToBookResponseMapper;
-import static com.shah.bookstoreapi.model.response.BookResponse.successResponse;
+import static com.shah.bookstoreapi.model.response.MyResponse.successResponse;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -37,7 +37,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookResponse<CreateBookResponse> addBook(CreateBookRequest book) {
+    public MyResponse<CreateBookResponse> addBook(CreateBookRequest book) {
         log.info("in BookService::addBook");
 
         Book book2 = bookRequestToBookMapper(book);
@@ -48,7 +48,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookResponse<List<Book>> getBookByTitleAndOrAuthor(String title, String author) {
+    public MyResponse<List<Book>> getBookByTitleAndOrAuthor(String title, String author) {
         log.info("in BookService::getBookByTitleAndOrAuthor");
         if (isNotBlank(title) && isNotBlank(author)) {
             return findByTitleAndAuthor(title, author);
@@ -57,27 +57,27 @@ public class BookServiceImpl implements BookService {
         } else if (isBlank(title) && isNotBlank(author)) {
             return findByAuthor(author);
         } else {
-            throw new BookException(ENTER_TITLE_OR_AUTHOR_NAME);
+            throw new MyException(ENTER_TITLE_OR_AUTHOR_NAME);
         }
     }
 
     @Override
-    public BookResponse<UUID> deleteBook(UUID isbn) {
+    public MyResponse<UUID> deleteBook(UUID isbn) {
         log.info("in BookService::deleteBook");
         Optional<Book> book = repository.findById(isbn);
         if (book.isEmpty()) {
-            throw new BookException(BOOK_NOT_FOUND);
+            throw new MyException(BOOK_NOT_FOUND);
         }
         repository.deleteById(isbn);
         return successResponse(isbn);
     }
 
     @Override
-    public BookResponse<Book> updateBook(UpdateBookRequest updateBook) {
+    public MyResponse<Book> updateBook(UpdateBookRequest updateBook) {
         log.info("in BookService::updateBook");
         Optional<Book> book = repository.findById(updateBook.getIsbn());
         if (book.isEmpty()) {
-            throw new BookException(BOOK_NOT_FOUND);
+            throw new MyException(BOOK_NOT_FOUND);
         }
         BeanUtils.copyProperties(updateBook, book.get());
         Book savedBook = repository.save(book.get());
@@ -93,7 +93,7 @@ public class BookServiceImpl implements BookService {
      * @return List of books
      */
 
-    private BookResponse<List<Book>> findByTitleAndAuthor(String title, String author) {
+    private MyResponse<List<Book>> findByTitleAndAuthor(String title, String author) {
         log.info("Finding book by title: {} and author: {}", title, author);
         List<Book> byTitleAndAuthor = repository.findByTitleIgnoreCaseAndAuthorNameIgnoreCase(title, author);
         if (!byTitleAndAuthor.isEmpty()) {
@@ -101,10 +101,10 @@ public class BookServiceImpl implements BookService {
             return successResponse(byTitleAndAuthor);
         }
         log.info(BOOK_NOT_FOUND);
-        throw new BookException(BOOK_NOT_FOUND);
+        throw new MyException(BOOK_NOT_FOUND);
     }
 
-    private BookResponse<List<Book>> findByTitle(String title) {
+    private MyResponse<List<Book>> findByTitle(String title) {
         log.info("Finding book by title: {} ", title);
         List<Book> byTitleName = repository.findByTitleIgnoreCase(title);
         if (!byTitleName.isEmpty()) {
@@ -112,10 +112,10 @@ public class BookServiceImpl implements BookService {
             return successResponse(byTitleName);
         }
         log.info(BOOK_NOT_FOUND);
-        throw new BookException(BOOK_NOT_FOUND);
+        throw new MyException(BOOK_NOT_FOUND);
     }
 
-    private BookResponse<List<Book>> findByAuthor(String author) {
+    private MyResponse<List<Book>> findByAuthor(String author) {
         log.info("Finding book by author: {}", author);
         List<Book> byAuthorName = repository.findByAuthorNameIgnoreCase(author);
         if (!byAuthorName.isEmpty()) {
@@ -123,6 +123,6 @@ public class BookServiceImpl implements BookService {
             return successResponse(byAuthorName);
         }
         log.info(BOOK_NOT_FOUND);
-        throw new BookException(BOOK_NOT_FOUND);
+        throw new MyException(BOOK_NOT_FOUND);
     }
 }

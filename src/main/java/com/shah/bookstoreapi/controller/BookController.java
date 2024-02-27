@@ -3,7 +3,7 @@ package com.shah.bookstoreapi.controller;
 import com.shah.bookstoreapi.model.entity.Book;
 import com.shah.bookstoreapi.model.request.CreateBookRequest;
 import com.shah.bookstoreapi.model.request.UpdateBookRequest;
-import com.shah.bookstoreapi.model.response.BookResponse;
+import com.shah.bookstoreapi.model.response.MyResponse;
 import com.shah.bookstoreapi.model.response.CreateBookResponse;
 import com.shah.bookstoreapi.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,7 +36,7 @@ public class BookController {
     }
 
     @GetMapping(GET_BOOK_BY_TITLE_AUTHOR)
-    public ResponseEntity<BookResponse<List<Book>>> getBookByTitleAndOrAuthor(
+    public ResponseEntity<MyResponse<List<Book>>> getBookByTitleAndOrAuthor(
             @Parameter(description = "Title of book", example = "Ghostbusters")
             @RequestParam
             @NotBlank
@@ -49,30 +49,30 @@ public class BookController {
     ) {
         log.info("in BookController::get-book-by-title-author");
         log.info("title: {}, author: {}", title, author);
-        BookResponse<List<Book>> foundBook = service.getBookByTitleAndOrAuthor(title, author);
+        MyResponse<List<Book>> foundBook = service.getBookByTitleAndOrAuthor(title, author);
         return ResponseEntity.status(HttpStatus.FOUND).body(foundBook);
     }
 
     @PostMapping(ADD_BOOK)
-    public ResponseEntity<BookResponse<CreateBookResponse>> addBook(@Valid @RequestBody CreateBookRequest book) {
+    public ResponseEntity<MyResponse<CreateBookResponse>> addBook(@Valid @RequestBody CreateBookRequest book) {
         log.info("in BookController::addBook");
         log.info("Book: {}", book);
-        BookResponse<CreateBookResponse> savedBook = service.addBook(book);
+        MyResponse<CreateBookResponse> savedBook = service.addBook(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
     }
 
     @Operation(security = @SecurityRequirement(name = "basicAuth"))
     @DeleteMapping(DELETE_BOOK + "/{isbn}")
-    public ResponseEntity<BookResponse<UUID>> deleteBook(
+    public ResponseEntity<MyResponse<UUID>> deleteBook(
             @Parameter(description = "unique id of book", example = "3fa85f64-5717-4562-b3fc-2c963f66afa6")
             @PathVariable UUID isbn) {
-        BookResponse<UUID> deleteSuccess = service.deleteBook(isbn);
+        MyResponse<UUID> deleteSuccess = service.deleteBook(isbn);
         return ResponseEntity.status(HttpStatus.OK).body(deleteSuccess);
     }
 
     @PutMapping(UPDATE_BOOK)
-    public ResponseEntity<BookResponse<Book>> updateBook(@Valid @RequestBody UpdateBookRequest book) {
-        BookResponse<Book> updatedBook = service.updateBook(book);
+    public ResponseEntity<MyResponse<Book>> updateBook(@Valid @RequestBody UpdateBookRequest book) {
+        MyResponse<Book> updatedBook = service.updateBook(book);
         return ResponseEntity.status(HttpStatus.OK).body(updatedBook);
     }
 }

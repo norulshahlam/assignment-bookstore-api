@@ -1,7 +1,7 @@
 package com.shah.bookstoreapi.exception;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.shah.bookstoreapi.model.response.BookResponse;
+import com.shah.bookstoreapi.model.response.MyResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -29,11 +29,11 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({BookException.class})
+    @ExceptionHandler({MyException.class})
     @ResponseBody
-    public BookResponse<String> handleBookException(HttpServletRequest req, BookException e) {
+    public MyResponse<String> handleBookException(HttpServletRequest req, MyException e) {
         log.error(ERROR_CAUSED_BY, e.getErrorMessage());
-        return BookResponse.failureResponse(e.getErrorMessage());
+        return MyResponse.failureResponse(e.getErrorMessage());
     }
 
     /**
@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseBody
-    public ResponseEntity<BookResponse<List<Errors>>> handleMethodArgumentNotValidException(HttpServletRequest req, MethodArgumentNotValidException e) {
+    public ResponseEntity<MyResponse<List<Errors>>> handleMethodArgumentNotValidException(HttpServletRequest req, MethodArgumentNotValidException e) {
 
         String requestUri = req.getRequestURI();
 
@@ -60,7 +60,7 @@ public class GlobalExceptionHandler {
                 .toList();
 
         log.error(ERROR_CAUSED_BY, cause);
-        BookResponse<List<Errors>> response = BookResponse.failureResponse(cause, "Validation failed for request URI: " + requestUri);
+        MyResponse<List<Errors>> response = MyResponse.failureResponse(cause, "Validation failed for request URI: " + requestUri);
         return ResponseEntity.badRequest().body(response);
     }
 
@@ -73,14 +73,14 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler({HttpMessageNotReadableException.class})
     @ResponseBody
-    public ResponseEntity<BookResponse<String>> handleHttpMessageNotReadableException(HttpServletRequest req, HttpMessageNotReadableException e) {
+    public ResponseEntity<MyResponse<String>> handleHttpMessageNotReadableException(HttpServletRequest req, HttpMessageNotReadableException e) {
 
         String requestUri = req.getRequestURI();
 
         String message = e.getMessage();
 
         log.error(ERROR_CAUSED_BY, message);
-        BookResponse<String> response = BookResponse.failureResponse(message, "Validation failed for request URI: " + requestUri);
+        MyResponse<String> response = MyResponse.failureResponse(message, "Validation failed for request URI: " + requestUri);
         return ResponseEntity.ok(response);
     }
 
@@ -94,11 +94,11 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({InvalidFormatException.class})
     @ResponseBody
-    public BookResponse<String> handleHttpMessageNotReadableException(
+    public MyResponse<String> handleHttpMessageNotReadableException(
             HttpServletRequest req, InvalidFormatException e) {
         String errorMessages = e.getLocalizedMessage();
         log.error(ERROR_CAUSED_BY, errorMessages);
-        return BookResponse.failureResponse(errorMessages);
+        return MyResponse.failureResponse(errorMessages);
     }
 
     /**
@@ -112,9 +112,9 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({Exception.class})
     @ResponseBody
-    public BookResponse<String> handleBaseException(HttpServletRequest req, Exception e) {
+    public MyResponse<String> handleBaseException(HttpServletRequest req, Exception e) {
         String errorMessages = e.getMessage();
         log.error("requestUrl : {}, occurred an error : {}, e detail : {}", req.getRequestURI(), errorMessages, e);
-        return BookResponse.failureResponse(errorMessages);
+        return MyResponse.failureResponse(errorMessages);
     }
 }
