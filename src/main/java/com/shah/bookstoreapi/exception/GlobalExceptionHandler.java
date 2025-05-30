@@ -112,9 +112,9 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({Exception.class})
     @ResponseBody
-    public MyResponse<String> handleBaseException(HttpServletRequest req, Exception e) {
+    public MyResponse handleBaseException(HttpServletRequest req, Exception e) {
         String errorMessages = e.getMessage();
-        log.error("requestUrl : {}, occurred an error : {}, e detail : {}", req.getRequestURI(), errorMessages, e);
+        log.error("requestUrl : {}, occurred an error : {}, e detail : {}", req.getRequestURI(), errorMessages);
         return MyResponse.failureResponse(errorMessages);
     }
 }
