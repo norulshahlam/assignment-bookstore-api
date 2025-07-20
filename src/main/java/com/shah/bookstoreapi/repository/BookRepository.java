@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface BookRepository  extends JpaRepository<Book, UUID> {
+public interface BookRepository extends JpaRepository<Book, UUID> {
     List<Book> findByTitleIgnoreCase(String title);
+
     List<Book> findByAuthorNameIgnoreCase(String author);
+
     List<Book> findByTitleIgnoreCaseAndAuthorNameIgnoreCase(String title, String author);
 }

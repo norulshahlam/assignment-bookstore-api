@@ -1,7 +1,7 @@
 package com.shah.bookstoreapi.model.response;
 
-import com.shah.bookstoreapi.model.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.shah.bookstoreapi.model.ResponseStatus;
 import lombok.*;
 
 /**
@@ -25,12 +25,14 @@ public class MyResponse<T> {
                 .data(data)
                 .build();
     }
+
     public static MyResponse failureResponse(String errorMessage) {
         return MyResponse.builder()
                 .status(ResponseStatus.FAILURE)
                 .errorMessage(errorMessage)
                 .build();
     }
+
     public static <T> MyResponse failureResponse(T data, String errorMessage) {
         return MyResponse.builder()
                 .status(ResponseStatus.FAILURE)

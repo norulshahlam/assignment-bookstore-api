@@ -40,7 +40,7 @@ public class CreateBookRequest {
 
     @Schema(example = "25.50")
     @Digits(integer = 4, fraction = 2, message = "Price must be in 2 decimal places")
-    @Positive(message="price must be positive")
+    @Positive(message = "price must be positive")
     @NotBlank(message = "price cannot be blank")
     private String price;
 

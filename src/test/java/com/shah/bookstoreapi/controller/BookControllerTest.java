@@ -46,29 +46,27 @@ class BookControllerTest {
     @Autowired
     private BookRepository repository;
     private CreateBookRequest createBookRequest;
-    private Author author1;
-    private Author author2;
 
-    private Book book1;
     private Book savedBook;
     ObjectMapper objectMapper = new ObjectMapper();
 
-    /** TODO
+    /**
+     * TODO
      * Add test case for ControllerAdvice
-     * https://reflectoring.io/spring-boot-web-controller-test/
+     * <a href="https://reflectoring.io/spring-boot-web-controller-test/">...</a>
      **/
 
     @BeforeEach
-    public void setUp() throws Exception {
-        author1 = Author.builder()
+    public void setUp() {
+        Author author1 = Author.builder()
                 .name("John")
                 .birthday(LocalDate.of(1985, 8, 30))
                 .build();
-        author2 = Author.builder()
+        Author author2 = Author.builder()
                 .name("Bob")
                 .birthday(LocalDate.of(1970, 8, 30))
                 .build();
-        book1 = Book.builder()
+        Book book1 = Book.builder()
                 .author(Arrays.asList(author1, author2))
                 .title("Test Book")
                 .genre("Horror")
@@ -85,9 +83,9 @@ class BookControllerTest {
                 .year(String.valueOf(2000))
                 .price("25.50")
                 .build();
-        /**
+        /*
          to fix the error ‘Java 8 date/time type not supported by default‘ while serializing and deserializing Java 8 Date time classes using Jackson.
-         **/
+         */
         objectMapper.registerModule(new JavaTimeModule());
     }
 
@@ -136,6 +134,7 @@ class BookControllerTest {
 
     /**
      * Check that only ADMIN role can perform this operation.
+     *
      * @throws Exception
      */
     @WithMockUser(roles = {"ADMIN"})
@@ -161,9 +160,10 @@ class BookControllerTest {
                 .andExpect(jsonPath("$.data.title", Matchers.equalToIgnoringCase("Changed title")))
                 .andExpect(status().isOk());
     }
+
     @Test
-    void getCurrentYear(){
-         Long now = Long.valueOf(Year.now().toString());
+    void getCurrentYear() {
+        Long now = Long.valueOf(Year.now().toString());
         System.out.println(now);
     }
 

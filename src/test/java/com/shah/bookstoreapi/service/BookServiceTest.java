@@ -6,8 +6,8 @@ import com.shah.bookstoreapi.model.entity.Author;
 import com.shah.bookstoreapi.model.entity.Book;
 import com.shah.bookstoreapi.model.request.CreateBookRequest;
 import com.shah.bookstoreapi.model.request.UpdateBookRequest;
-import com.shah.bookstoreapi.model.response.MyResponse;
 import com.shah.bookstoreapi.model.response.CreateBookResponse;
+import com.shah.bookstoreapi.model.response.MyResponse;
 import com.shah.bookstoreapi.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,9 +42,6 @@ class BookServiceTest {
 
     private CreateBookRequest createBookRequest;
 
-    private Author author1;
-    private Author author2;
-
     private Book book1;
     ArrayList<Book> emptyResult = new ArrayList<>();
     MyException myException = null;
@@ -52,11 +49,11 @@ class BookServiceTest {
 
     @BeforeEach
     void setUp() {
-        author1 = Author.builder()
+        Author author1 = Author.builder()
                 .name("John")
                 .birthday(LocalDate.of(1985, 8, 30))
                 .build();
-        author2 = Author.builder()
+        Author author2 = Author.builder()
                 .name("Bob")
                 .birthday(LocalDate.of(1970, 8, 30))
                 .build();
@@ -150,7 +147,7 @@ class BookServiceTest {
         UpdateBookRequest updateBookRequest2 = new UpdateBookRequest();
 
         // Book NOT found
-        BeanUtils.copyProperties(book1,updateBookRequest2);
+        BeanUtils.copyProperties(book1, updateBookRequest2);
         when(repository.findById(any())).thenReturn(Optional.empty());
         myException = assertThrows(MyException.class, () -> service.updateBook(updateBookRequest2));
         assertThat(myException.getErrorMessage()).isEqualTo(BOOK_NOT_FOUND);
